@@ -1,0 +1,56 @@
+extends ../layout
+
+block content
+  .form-container
+    h1.page-title Share Your Travel Story
+    
+    if errors
+      .error-list
+        each error in errors
+          .error-message= error.msg
+
+    form.post-form(action="/posts" method="POST" enctype="multipart/form-data")
+      .form-group
+        label(for="title") Title
+        input#title(
+          type="text" 
+          name="title" 
+          value=post ? post.title : ''
+          required
+          maxlength="100"
+          placeholder="Enter the title of your travel story"
+        )
+
+      .form-group
+        label(for="location") Location
+        input#location(
+          type="text" 
+          name="location" 
+          value=post ? post.location : ''
+          required
+          placeholder="Where did you travel?"
+        )
+
+      .form-group
+        label(for="description") Description
+        textarea#description(
+          name="description" 
+          required
+          maxlength="2000"
+          placeholder="Share your travel experience..."
+          rows="6"
+        )= post ? post.description : ''
+
+      .form-group
+        label(for="image") Upload Image
+        input#image(
+          type="file" 
+          name="image"
+          accept="image/*"
+          required
+        )
+        .file-help-text Supported formats: JPEG, PNG, GIF (max 5MB)
+
+      .form-actions
+        button.btn.primary(type="submit") Share Story
+        a.btn.secondary(href="/posts") Cancel

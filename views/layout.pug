@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{title} - Travel Journal
+    link(rel="stylesheet" href="/styles/style.css")
+  body
+    header.header
+      nav.nav
+        .container
+          a.logo(href="/") Travel Journal
+          ul.nav-links
+            li: a(href="/") Home
+            li: a(href="/posts") All Posts
+            li: a(href="/posts/new") Create Post
+    
+    main.container
+      block content
+    
+    footer.footer
+      .container
+        p This web application was created to fulfill Web Technology module's requirements and does not represent an actual company or service.

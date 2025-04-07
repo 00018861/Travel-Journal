@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .error-container
+    h1= message || 'Error'
+    if error && error.status
+      h2= error.status
+    if error && process.env.NODE_ENV === 'development'
+      pre #{error.stack}

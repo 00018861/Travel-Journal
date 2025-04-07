@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+  .form-container
+    h1.page-title Edit Travel Story
+    
+    if errors
+      .error-list
+        each error in errors
+          .error-message= error.msg
+
+    form.post-form(action=`/posts/${post._id}/edit` method="POST" enctype="multipart/form-data")
+      .form-group
+        label(for="title") Title
+        input#title(
+          type="text" 
+          name="title" 
+          value=post.title
+          required
+          maxlength="100"
+          placeholder="Enter the title of your travel story"
+        )
+
+      .form-group
+        label(for="location") Location
+        input#location(
+          type="text" 
+          name="location" 
+          value=post.location
+          required
+          placeholder="Where did you travel?"
+        )
+
+      .form-group
+        label(for="description") Description
+        textarea#description(
+          name="description" 
+          required
+          maxlength="2000"
+          placeholder="Share your travel experience..."
+          rows="6"
+        )= post.description
+
+      .form-group
+        label(for="image") Change Image
+        if post.image
+          .current-image
+            img(src=post.image alt=post.title)
+            p Current image
+        input#image(
+          type="file" 
+          name="image"
+          accept="image/*"
+        )
+        .file-help-text Supported formats: JPEG, PNG, GIF (max 5MB). Leave empty to keep current image.
+
+      .form-actions
+        button.btn.primary(type="submit") Update Story
+        a.btn.secondary(href=`/posts/${post._id}`) Cancel

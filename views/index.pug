@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .hero
+    h1.hero-title Welcome to Travel Journal
+    p.hero-text Share your travel experiences with the world
+    a.btn.primary(href="/posts/new") Create New Post
+  
+  .featured-posts
+    h2 Recent Travel Stories
+    .posts-grid
+      if posts && posts.length
+        each post in posts
+          .post-card
+            if post.image
+              img.post-image(src=post.image alt=post.title)
+            .post-content
+              h3.post-title= post.title
+              p.post-location= post.location
+              p.post-excerpt= post.description.substring(0, 150) + '...'
+              a.btn.secondary(href=`/posts/${post._id}`) Read More
+      else
+        p.no-posts No travel stories yet. Be the first to share!

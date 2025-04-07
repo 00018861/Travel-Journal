@@ -1,0 +1,24 @@
+{
+  "name": "travel-journal",
+  "version": "1.0.0",
+  "description": "A travel journal web application for Web Technologies coursework",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["travel", "journal", "express", "node"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2",
+    "mongoose": "^8.0.0",
+    "express-validator": "^7.0.0",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

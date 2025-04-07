@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .posts-header
+    h1.page-title Travel Stories
+    a.btn.primary(href="/posts/new") Share New Story
+
+  .posts-grid
+    if posts && posts.length
+      each post in posts
+        .post-card
+          if post.image
+            img.post-image(src=post.image alt=post.title)
+          .post-content
+            h3.post-title= post.title
+            p.post-location
+              i.fas.fa-map-marker-alt
+              span= post.location
+            p.post-excerpt= post.description.substring(0, 150) + '...'
+            .post-actions
+              a.btn.secondary(href=`/posts/${post._id}`) Read More
+              a.btn.secondary(href=`/posts/${post._id}/edit`) Edit
+              form.delete-form(action=`/posts/${post._id}/delete` method="POST" onsubmit="return confirm('Are you sure you want to delete this post?')")
+                button.btn.danger(type="submit") Delete
+    else
+      .no-posts
+        p No travel stories yet. Be the first to share your adventure!
