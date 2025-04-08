@@ -12,7 +12,7 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/travel_journal')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://saodat:saodat11@cluster0.bn3rkf5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log('Connected to MongoDB');
   })
